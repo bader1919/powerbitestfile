@@ -1,0 +1,20 @@
+table _datecalander
+	lineageTag: 7ea54e4f-71ca-4758-bec2-a473e966e879
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: df73ae53-1386-4bcc-9584-ddcab9535388
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _datecalander = calculated
+		mode: import
+		source = CALENDAR (DATE (2015, 1, 1), DATE (2026, 12, 31))
+
+	annotation PBI_Id = f12d3b2370be47b1ae2db3fa29ded4d1
+

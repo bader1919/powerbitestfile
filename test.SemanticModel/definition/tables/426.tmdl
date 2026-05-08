@@ -1,0 +1,175 @@
+table 426
+	lineageTag: 8b395dcd-cf7d-4105-aff9-75f52dec9130
+
+	measure id = COUNT('426'[<cell>])
+		formatString: 0
+		lineageTag: d6a30178-61ae-4853-bb31-ad21221ab84c
+
+	column <radio>
+		dataType: string
+		lineageTag: dd5ebda7-ed2e-4ee0-8fb3-6c2ce773f902
+		summarizeBy: none
+		sourceColumn: <radio>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <mcc>
+		dataType: int64
+		formatString: 0
+		lineageTag: f85f0218-0e2d-4532-b4e6-807b16f22af8
+		summarizeBy: sum
+		sourceColumn: <mcc>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <net>
+		dataType: int64
+		formatString: 0
+		lineageTag: 491e85b2-bc6f-4475-85bc-6fbcc4729085
+		summarizeBy: sum
+		sourceColumn: <net>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <area>
+		dataType: int64
+		formatString: 0
+		lineageTag: 09721736-03f5-4b85-9e6a-04761237ab3c
+		summarizeBy: sum
+		sourceColumn: <area>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <cell>
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fa9dc26-e1a2-4df9-a562-5ffe32250ebc
+		summarizeBy: none
+		sourceColumn: <cell>
+
+		annotation SummarizationSetBy = User
+
+	column <unit>
+		dataType: int64
+		formatString: 0
+		lineageTag: 62bbb51a-d16a-4fd2-80f6-85feaec04390
+		summarizeBy: sum
+		sourceColumn: <unit>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <lon>
+		dataType: double
+		lineageTag: e9fc764a-a1c5-419b-bad3-633c813e3d6f
+		summarizeBy: sum
+		sourceColumn: <lon>
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column <lat>
+		dataType: double
+		lineageTag: 5eb74f22-9473-42e5-8282-db96269ab9b3
+		summarizeBy: sum
+		sourceColumn: <lat>
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column <range>
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ad755be-aa0f-4b4e-be04-086dc12f1a4a
+		summarizeBy: none
+		sourceColumn: <range>
+
+		annotation SummarizationSetBy = User
+
+	column <samples>
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b7e4b4e-6516-4f4b-994e-fe2feb335a6d
+		summarizeBy: sum
+		sourceColumn: <samples>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <changeable>
+		dataType: int64
+		formatString: 0
+		lineageTag: f48fbd13-19fb-48d0-877c-0a3bdb821024
+		summarizeBy: sum
+		sourceColumn: <changeable>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <created>
+		dataType: int64
+		formatString: 0
+		lineageTag: 303a1b14-1d7c-467c-a484-87c15d31ff53
+		summarizeBy: sum
+		sourceColumn: <created>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <created>_1
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 40258d66-b3c2-41fc-84ff-f54211b78f44
+		summarizeBy: none
+		sourceColumn: <created>_1
+
+		variation Variation
+			isDefault
+			relationship: 2a9317ad-4212-4d12-879b-6042da5d28d9
+			defaultHierarchy: LocalDateTable_25cf0229-8aa6-464f-ae53-0065f6da612b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column <updated>
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d8db604-a425-444c-b881-aee48e2682ff
+		summarizeBy: sum
+		sourceColumn: <updated>
+
+		annotation SummarizationSetBy = Automatic
+
+	column <updated>_2
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 498ff25a-8f47-4bed-a8a9-683c19bb63a7
+		summarizeBy: none
+		sourceColumn: <updated>_2
+
+		variation Variation
+			isDefault
+			relationship: 34adec56-6175-4ae9-922e-e36ac78f2125
+			defaultHierarchy: LocalDateTable_b949028c-7f1a-4096-b095-be84d0003c68.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column <averageSignal>
+		dataType: int64
+		formatString: 0
+		lineageTag: 05a8df8a-0058-4b02-8c9c-bb71db1a5c91
+		summarizeBy: sum
+		sourceColumn: <averageSignal>
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 426 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\bader\Downloads\426.csv\426.xlsx"), null, true),
+				    #"426_Sheet" = Source{[Item="426",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"426_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"<radio>", type text}, {"<mcc>", Int64.Type}, {"<net>", Int64.Type}, {"<area>", Int64.Type}, {"<cell>", Int64.Type}, {"<unit>", Int64.Type}, {"<lon>", type number}, {"<lat>", type number}, {"<range>", Int64.Type}, {"<samples>", Int64.Type}, {"<changeable>", Int64.Type}, {"<created>", Int64.Type}, {"<created>_1", type datetime}, {"<updated>", Int64.Type}, {"<updated>_2", type datetime}, {"<averageSignal>", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

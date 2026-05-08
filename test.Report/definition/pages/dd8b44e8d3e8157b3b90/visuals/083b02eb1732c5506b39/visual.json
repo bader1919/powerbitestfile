@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "083b02eb1732c5506b39",
+  "position": {
+    "x": 10,
+    "y": 509,
+    "z": 1000,
+    "height": 211,
+    "width": 862,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "426"
+                    }
+                  },
+                  "Property": "<radio>"
+                }
+              },
+              "queryRef": "426.<radio>",
+              "nativeQueryRef": "<radio>",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "426"
+                    }
+                  },
+                  "Property": "<cell>"
+                }
+              },
+              "queryRef": "426.<cell>",
+              "nativeQueryRef": "<cell>",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "426"
+                        }
+                      },
+                      "Property": "<range>"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "CountNonNull(426.<range>)",
+              "nativeQueryRef": "Sum of <range>"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "426"
+                  }
+                },
+                "Property": "<cell>"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
